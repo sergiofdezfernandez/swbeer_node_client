@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('partials/head.ejs') %>
+</head>
+<body class="container">
+<header>
+    <%- include('partials/header.ejs') %>
+</header>
+<main>
+    <div class="jumbotron">
+        <h1>Calculadora</h1>
+        <form method="POST" action="/" role="form">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Suma</label>
+                <div class="col-sm-5">
+                    <input type="number" class="form-control" name="term1">
+                    <input type="number" class="form-control" name="term2">
+                </div>
+                <div class="col-sm-5">
+                    <button type="submit" class="btn btn-primary">Sumar</button>
+                </div>
+            </div>
+        </form>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Resultado</h5>
+                <% if (result){%>
+                    <p class="card-text"><%= result.return%></p>
+                <%}else {%>
+                    <p class="card-text" style="color: red">No se ha podido conectar con el servidor</p>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</main>
+<footer>
+    <%- include('partials/footer.ejs') %>
+</footer>
+</body>
+</html>
