@@ -4,12 +4,13 @@ var soap = require('soap')
 
 var client = null;
 const url = 'http://localhost:8080/WS_Unit03_Example1_war_exploded/soapws/calculator?wsdl';
+
 soap.createClient(url, function (err, soapClient) {
     client = soapClient;
 });
 
 router.get('/', function (req, res, next) {
-    res.render('index', {result:{}});
+    res.render('index', {result: {}});
 });
 
 router.post('/', function (req, res, next) {
