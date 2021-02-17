@@ -1,0 +1,10 @@
+{
+  "AWS": {
+    "accessKeyId": "AKIAJYADVBBW3GKOHP2A",
+    "secretAccessKey": "tQcJceilZic6RKpAOk0Pf+QwdmO/4FRMmhyLzVMG",
+    "region": "us-east-2"
+  },
+  "SOAP-SERVER": {
+    "url": "http://localhost:8080/WS_Unit03_Example1_war_exploded/soapws/calculator?wsdl"
+  }
+}
