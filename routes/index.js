@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var soap = require('soap')
 var AWS = require('aws-sdk');
 const config = require('config');
 
@@ -17,27 +16,10 @@ AWS.config.update(
     }
 );
 
-var client = null;
-const url = config.get("SOAP-SERVER.url");
-
-soap.createClient(url, function (err, soapClient) {
-    client = soapClient;
-});
-
 router.get('/', function (req, res, next) {
-    res.render('index', {result: {}});
+    res.render('index');
 });
 
-router.post('/', function (req, res, next) {
-    const args = {arg0: req.body.term1, arg1: req.body.term2}
-    client.add(args, function (err, result) {
-        console.log(result)
-        return res.render('index', {result})
-    });
-});
-router.get('/translate', function (req, res, next) {
-    res.render('test', {text:""});
-});
 
 router.post('/translate', function (req, res, next) {
     var translate = new AWS.Translate();

@@ -5,6 +5,6 @@
     "region": "us-east-2"
   },
   "SOAP-SERVER": {
-    "url": "http://localhost:8080/WS_Unit03_Example1_war_exploded/soapws/calculator?wsdl"
+    "url": "http://localhost:9000/Swbeer.asmx?WSDL"
   }
 }
