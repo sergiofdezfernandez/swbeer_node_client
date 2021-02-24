@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('../partials/head.ejs') %>
+</head>
+<body class="container">
+<header>
+    <%- include('../partials/header.ejs') %>
+</header>
+<main>
+    <div class="card border-light p-4 m-4">
+        <div class="row">
+            <div class="col-md-6">
+                <h1 class="display-4"><%= beer.Name %></h1>
+                <img src="<%= beer.Image_Url %>" class="img" height="250" width="100"/>
+                <div class="card border-light">
+                    <div class="card-body"><%= beer.Description %></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <dl class="list-group">
+                    <dt class="list-group-item">Frabicada por primera vez</dt>
+                    <dd class="list-group-item"><%= new Date(beer.First_Brewed).toLocaleDateString("es-ES", {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                        }) %></dd>
+                    <dt class="list-group-item">porcentaje de alcohol</dt>
+                    <dd class="list-group-item">
+                        <div class="progress">
+                            <% var conversion = 10 * parseInt(beer.Abv) %>
+                            <div class="progress-bar bg-warning" role="progressbar"
+                                 style="width:<%= conversion + '%' %>">
+                                <%= beer.Abv + ' %' %>
+                            </div>
+                        </div>
+                    </dd>
+                    <dt class="list-group-item">Consejos cervezeros</dt>
+                    <dl class="list-group-item"><%= beer.Brewers_Tips %></dl>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <% reviews.forEach(function (review){ %>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-2">
+                        <img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                        <p class="text-secondary text-center"><%= review.User.Email %></p>
+                    </div>
+                    <div class="col-md-10">
+                        <p>
+                            <a class="float-left"
+                               href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>
+                                    <% review.User.Name %>
+                                </strong></a>
+                        </p>
+                        <div class="clearfix"></div>
+                        <% for (var i = 0; i < 5 - parseInt(review.Score);i++){ %>
+                            <span class="float-right"><i class="fa fa-star"></i></span>
+                        <% } %>
+                        <% for (var i = 0; i < parseInt(review.Score);i++){ %>
+                            <span class="float-right"><i class="text-warning fa fa-star"></i></span>
+                        <% } %>
+                        <p><%= review.Comment %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }); %>
+    <div class="card p-4 m-4">
+        <h4 class="card-title">Tu valoración</h4>
+        <div class="card-body">
+            <form class="row" action="/beers/<%=beer.Id%>/review" method="POST" role="form">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Comentario</label>
+                        <textarea class="form-control" name="comment"
+                                  placeholder="Escribe tu comentario aquí"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Puntuación</label>
+                        <select class="form-control" name="score">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-warning">Publicar</button>
+            </form>
+        </div>
+    </div>
+</main>
+<footer>
+    <%- include('../partials/footer.ejs') %>
+</footer>
+</body>
+</html>

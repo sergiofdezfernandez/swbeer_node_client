@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <%- include('partials/head.ejs') %>
+</head>
+<body class="container">
+<header>
+    <%- include('partials/header.ejs') %>
+</header>
+<main>
+    <div class="row justify-content-center">
+        <% beers.forEach(function (beer){ %>
+            <div class="card border-light p-3" style="max-width:25em; margin: 0.8em">
+                <div class="card-header lead text-center"><%- beer.name %></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="<%- beer.image_url %>" class="card-img-top" alt="imagen de la cerveza"
+                             height="400">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="card-text"><%- beer.description %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</main>
+<footer>
+    <%- include('partials/footer.ejs') %>
+</footer>
+</body>
+</html>

@@ -6,5 +6,8 @@
   },
   "SOAP-SERVER": {
     "url": "http://localhost:9000/Swbeer.asmx?WSDL"
+  },
+  "PUNK-API": {
+    "base-url": "https://api.punkapi.com/v2"
   }
 }

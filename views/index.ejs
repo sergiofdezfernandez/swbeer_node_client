@@ -8,6 +8,10 @@
     <%- include('partials/header.ejs') %>
 </header>
 <main>
+    <div class="text-center">
+        <h1 >Bienvenido <br><%=locals.session.user.Name%></h1>
+        <img src="images/logo.jpg" class="img"/>
+    </div>
 </main>
 <footer>
     <%- include('partials/footer.ejs') %>

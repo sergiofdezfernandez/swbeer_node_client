@@ -1,21 +1,36 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
-        <img src="images/logo.jpg" width="100" class="d-inline-block align-top" alt="logotipo">
+    <a class="navbar-brand" href="/">
+        <img src="/images/logo.jpg" width="100" class="d-inline-block align-top" alt="logotipo">
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="container-fluid" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Inicio</a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="/beers">Cervezas</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/Recomendations">Recomendaciones <span></span><sup><span class="badge badge-pill badge-dark">Nuevo</span></sup></a>
+                <a class="nav-link" href="/recomendations">Recomendaciones <span></span><sup><span
+                                class="badge badge-pill badge-warning">Nuevo</span></sup></a>
             </li>
         </ul>
+        <% if(locals.session.user){ %>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/logout">
+                        <i class="fa fa-sign-out-alt" aria-hidden="true"></i>
+                        Cerrar Sesión
+                    </a>
+                </li>
+
+            </ul>
+        <% } %>
     </div>
 </nav>
+<% if (locals.session.flash) { %>
+    <% while (locals.session.flash.warning.length > 0) { %>
+        <div class="alert alert-warning text-center" id="alert">
+            <%= locals.session.flash.warning.pop() %>
+        </div>
+    <% } %>
+<% } %>
+
