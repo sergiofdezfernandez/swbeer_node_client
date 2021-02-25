@@ -1,13 +1,8 @@
 {
-  "AWS": {
-    "accessKeyId": "AKIAJYADVBBW3GKOHP2A",
-    "secretAccessKey": "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",
-    "region": "us-east-2"
-  },
   "SOAP-SERVER": {
     "url": "http://localhost:9000/Swbeer.asmx?WSDL"
   },
-  "PUNK-API": {
-    "base-url": "https://api.punkapi.com/v2"
+  "REST-SERVICE": {
+    "base-url": "http://localhost:9091/api/Beers/getRecomendation"
   }
 }

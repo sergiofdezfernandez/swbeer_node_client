@@ -8,13 +8,16 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/recomendations', function (req, res, next) {
-    var url = config.get("PUNK-API.base-url") + "/beers/random";
-    request(url, {json: true}, (err, response, body) => {
+    var url = config.get("REST-SERVICE.base-url");
+    request(url, {json:true}, (err,response,body) => {
         if (err) {
-            return console.log(err);
+            res.flash("warning")
+            return;
+        }else{
+            res.render('recomendations', {beer:body});
         }
-        res.render('recomendations', {beers:body});
     });
+    console.log(url);
 });
 
 module.exports = router;
