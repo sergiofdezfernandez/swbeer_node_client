@@ -34,7 +34,7 @@ router.post('/signUp', function (req, res, next) {
 router.post('/login', function (req, res, next) {
     var credentials = JSON.parse(JSON.stringify(req.body));
     client.Login(credentials,function(err,result){
-       if(result.LoginResult){
+       if(result){
            delete result.LoginResult.Password;
            req.session.user= result.LoginResult;
            res.redirect('/');

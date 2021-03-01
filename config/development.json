@@ -1,8 +1,8 @@
 {
   "SOAP-SERVER": {
-    "url": "http://localhost:9000/Swbeer.asmx?WSDL"
+    "url": "http://156.35.98.135/SWBeer.asmx?WSDL"
   },
   "REST-SERVICE": {
-    "base-url": "http://localhost:9091/api/Beers/getRecomendation"
+    "base-url": "http://156.35.98.167:8082/api/Beers/getRecomendation"
   }
 }
